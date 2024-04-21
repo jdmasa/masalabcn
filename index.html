@@ -15,13 +15,17 @@ function myFunction(xml) {
   var x, i, xmlDoc, txt;
   xmlDoc = xml.responseXML;
   txt = "";
+  list = [];
   x = xmlDoc.getElementsByTagName("item");
   for (i = 0; i< x.length; i++) {
     console.log(x[i]);
-    txt += x[i].getElementsByTagName("title")[0].innerHTML + "<br>";
-    
+    txt +=  + "<br>";
+    list.push(x[i].getElementsByTagName("title")[0].innerText);    
   }
-  document.getElementById("demo").innerHTML = txt;
+  list.sort();
+  for (i = 0; i< list.length; i++) {
+    document.getElementById("demo").innerHTML += list[i] + "<br/>";
+  }
 }
   loadXMLDoc();
 </script>
