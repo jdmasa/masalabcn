@@ -17,8 +17,9 @@ function myFunction(xml) {
   txt = "";
   x = xmlDoc.getElementsByTagName("item");
   for (i = 0; i< x.length; i++) {
-    txt += x[i].childNodes[0].childNodes[0].nodeValue + "<br>";
     console.log(x[i]);
+    txt += x[i].childNodes[0].childNodes[0].nodeValue + "<br>";
+    
   }
   document.getElementById("demo").innerHTML = txt;
 }
