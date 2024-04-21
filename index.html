@@ -20,7 +20,7 @@ function myFunction(xml) {
   for (i = 0; i< x.length; i++) {
     console.log(x[i]);
     txt +=  + "<br>";
-    list.push(x[i].getElementsByTagName("title")[0].innerText);    
+    list.push(x[i].getElementsByTagName("title")[0].textContent);    
   }
   list.sort();
   for (i = 0; i< list.length; i++) {
