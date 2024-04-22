@@ -20,8 +20,8 @@ function myFunction(xml) {
   for (i = 0; i< x.length; i++) {
     
     list.push(
-          ["title": x[i].getElementsByTagName("title")[0].textContent,
-          "content":  x[i].getElementsByTagName("content:encoded")[0].innerHTML]
+      {"title": x[i].getElementsByTagName("title")[0].textContent,
+          "content":  x[i].getElementsByTagName("content:encoded")[0].innerHTML}
     );    
   }
   list.sort(function (a, b) {
