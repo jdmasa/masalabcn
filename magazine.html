@@ -19,7 +19,7 @@
 		</div>
 	</div>
 </div>
-<p id="index"></p>
+<p id="sideindex"></p>
 
 <script type="text/javascript">
 
@@ -61,6 +61,7 @@ function renderPage(xml) {
   for (i = 0; i< list.length; i++) {
     console.log(list[i]);
     document.getElementById("index").innerHTML += list[i].title + "<br/>";
+	  document.getElementById("sideindex").innerHTML += list[i].title + "<br/>";
 
 	const node = document.createElement("div");
 	node.innerHTML = "<h2>" + list[i].title + "</h2><p>" + list[i].content.replace("<![CDATA[", "").replace("]]>", ""); + "</p>";
