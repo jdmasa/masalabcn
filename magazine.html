@@ -15,23 +15,60 @@
 	<div class="container">
 		<div class="flipbook">
 			<div style="background-image:url(pages/1.jpg)"></div>
-			<div style="background-image:url(pages/2.jpg)"></div>
-			<div style="background-image:url(pages/3.jpg)"></div>
-			<div style="background-image:url(pages/4.jpg)"></div>
-			<div style="background-image:url(pages/5.jpg)"></div>
-			<div style="background-image:url(pages/6.jpg)"></div>
-			<div style="background-image:url(pages/7.jpg)"></div>
-			<div style="background-image:url(pages/8.jpg)"></div>
-			<div style="background-image:url(pages/9.jpg)"></div>
-			<div style="background-image:url(pages/10.jpg)"></div>
-			<div style="background-image:url(pages/11.jpg)"></div>
-			<div style="background-image:url(pages/12.jpg)"></div>
 		</div>
 	</div>
 </div>
 
 
 <script type="text/javascript">
+
+	function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      renderPage(this);
+    }
+  };
+  xmlhttp.open("GET", "receptes.xml", true);
+  xmlhttp.send();
+}
+
+function renderPage(xml) {
+  const parser = new DOMParser();
+  var x, i, xmlDoc, txt;
+  xmlDoc = xml.responseXML;
+  txt = "";
+  list = [];
+  x = xmlDoc.getElementsByTagName("item");
+  for (i = 0; i< x.length; i++) {
+    
+    list.push(
+      {"title": x[i].getElementsByTagName("title")[0].textContent,
+          "content":  x[i].getElementsByTagName("content:encoded")[0].innerHTML}
+    );    
+  }
+  list.sort(function (a, b) {
+  if (a.title < b.title) {
+    return -1;
+  }
+  if (a.title > b.title) {
+    return 1;
+  }
+  return 0;
+});
+  
+  for (i = 0; i< list.length; i++) {
+    console.log(list[i]);
+    document.getElementById("index").innerHTML += list[i].title + "<br/>";
+
+	const node = document.createElement("div");
+	node.innerHTML = "<h2>" + list[i].title + "</h2><p>" + list[i].content.replace("<![CDATA[", "").replace("]]>", ""); + "</p>";
+	document.getElementById("flipbook").appendChild(node);
+  
+    /*document.getElementById("body").innerHTML += "<h2>" + list[i].title + "</h2><p>" + list[i].content.replace("<![CDATA[", "").replace("]]>", ""); + "</p>";*/
+  }
+}
+  loadXMLDoc();
 
 function loadApp() {
 
