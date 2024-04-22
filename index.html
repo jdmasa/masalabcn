@@ -39,7 +39,7 @@ function myFunction(xml) {
     console.log(list[i]);
     document.getElementById("index").innerHTML += list[i].title + "<br/>";
   
-    document.getElementById("body").innerHTML += "<h2>" + list[i].title + "</h2><p>" + parser.parseFromString(list[i].content, "application/xml").nodeValue + "</p>";
+    document.getElementById("body").innerHTML += "<h2>" + list[i].title + "</h2><p>" + parser.parseFromString(list[i].content, "application/xml").childNodes[0].nodeValue + "</p>";
   }
 }
   loadXMLDoc();
