@@ -36,10 +36,12 @@ function myFunction(xml) {
   
   for (i = 0; i< list.length; i++) {
     console.log(list[i]);
-    document.getElementById("demo").innerHTML += list[i].title + "<br/>";
+    document.getElementById("index").innerHTML += list[i].title + "<br/>";
+    document.getElementById("body").innerHTML += "<h2>" + list[i].title + "</h2><p>" + list[i].content + "</p>";
   }
 }
   loadXMLDoc();
 </script>
 <h1>Hello!</h1>
-<p id="demo"></p>
+<p id="index"></p>
+<div id="body"></div>
